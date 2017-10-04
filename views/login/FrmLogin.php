@@ -6,6 +6,10 @@
  * Time: 12:35 AM
  */
 
+use core\core;
+use models\login;
+
+
 ?>
 <!DOCTYPE html>
 <html >
@@ -13,11 +17,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Ikro Sistemas</title>
-</head>
+    <?=core::getTitle()?></head>
 <body class="full">
-
-
 <div class="contenedor">
 
 
