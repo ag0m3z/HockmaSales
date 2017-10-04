@@ -21,6 +21,9 @@ header("Pragma: no-cache");
 
 class core
 {
+    public static $_nombreApp = "HockSales";
+    public static $_versionApp = "17.09.20";
+
     public function __construct()
     {
 
@@ -32,17 +35,21 @@ class core
         return $ruta;
     }
 
-    public static function APP_NAME($NombreApp = "HockSales"){
+    public static function APP_NAME($NombreApp = NULL){
+
+        if($NombreApp == null){$NombreApp = self::$_nombreApp;}
         return $NombreApp;
     }
 
-    public static function APP_VERSION($VersionApp = "17.09.20"){
+    public static function APP_VERSION($VersionApp = null){
+        if($VersionApp == null){$VersionApp = self::$_versionApp;}
         return $VersionApp;
     }
 
-    public static function getTitle($title = "ikro System"){
+    public static function getTitle($title = null){
+        if($title == null){$title = self::$_nombreApp;}
 
-        print "<title>$title</title>";
+        print "<title>".$title."</title>";
 
     }
 
