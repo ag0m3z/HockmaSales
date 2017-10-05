@@ -31,7 +31,7 @@ class views
 
     public function load(){
 
-        include "views/$this->_view/$this->_nameView";
+        include "app/views/$this->_view/$this->_nameView";
 
     }
 
@@ -39,7 +39,7 @@ class views
 
         $valid=false;
 
-        if(file_exists($file =  "views/$this->_view/$this->_nameView")){
+        if(file_exists($file =  "app/views/$this->_view/$this->_nameView")){
             $valid = true;
         }else{
             views::Error("Error la vista solicitada no existe");
