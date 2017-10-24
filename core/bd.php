@@ -155,8 +155,7 @@ class bd
     public function __destruct()
     {
         // TODO: Implement __destruct() method.
-
-    }
+        $this->conexion->close();    }
 
 
 }

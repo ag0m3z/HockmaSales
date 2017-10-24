@@ -53,6 +53,15 @@ class core
 
     }
 
+    public static function HeaderContetType($Type = "JSON"){
+
+        $Type = strtolower($Type);
+
+        echo header("ContentType:application/'.$Type.'; charset=utf-8");
+
+
+    }
+
     public static function includeCSS($dir_path,$all_folder = false){
         if($all_folder){
             // Recorrer todas las hojas de estilo y agregarlas

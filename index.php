@@ -19,10 +19,8 @@ class App{
         include "core/sesiones.php";
         include "core/views.php";
 
-
         $vista = new views();
         $sesiones = new sesiones();
-
 
         if($sesiones->getExisteSesion()){
 
