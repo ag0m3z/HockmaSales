@@ -23,7 +23,7 @@ inc
     \core\core::includeCSS("content/css/skins/_all-skins.css",false);
 
     // Nombre de la pagina
-    ?><title>Sistema 12</title></head><body class="skin-cyan fixed sidebar-collapse sidebar-mini">
+    ?><title>Sistema 12</title></head><body class="skin-red-light fixed sidebar-collapse sidebar-mini">
 <div class="wrapper">
     <?php include "app/layout/header.inc";
     include "app/layout/menu_principal.inc";?>
