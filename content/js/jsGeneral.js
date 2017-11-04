@@ -109,7 +109,7 @@ $(function () {
 var MyAlert = function (mensaje,type) {
 
     alert(mensaje);
-}
+};
 
 var getthowError = function (jqXHR,textStatus) {
 
