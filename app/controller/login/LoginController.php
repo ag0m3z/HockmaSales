@@ -14,11 +14,14 @@ include "../../models/login/LoginModels.php";
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
-    $idUsuario = $_SESSION['dataHome']['idusuario'];
-    $idDepartamento = $_SESSION['dataHome']['iddepartamento'];
-    $idPuesto = $_SESSION['dataHome']['idpuesto'];
-    $idPerfil = $_SESSION['dataHome']['idperfil'];
-
+    $_SESSION['dataHome']['idusuario'] = 1;
+    echo json_encode(
+        array(
+            'result'=>true,
+            'message'=>'Consulta Exitosa',
+            'data'=>array()
+        )
+    );
 
 
 }else{

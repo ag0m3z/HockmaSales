@@ -26,8 +26,8 @@ class App{
 
             $vista->call_view(
                 array(
-                    'index',
-                    'frmHome'
+                    'Home',
+                    'FrmHome'
                 )
             );
 

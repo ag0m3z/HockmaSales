@@ -36,9 +36,9 @@ class sesiones
 
     public function getExisteSesion(){
 
-        if(array_key_exists('DataLogin',$_SESSION)){
+        if(array_key_exists('dataHome',$_SESSION)){
 
-            if(!isset($_SESSION['DataLogin']['idUsuario'])){
+            if(!isset($_SESSION['dataHome']['idusuario'])){
                 $this->delete_sesion();
                 return false;
             }else{

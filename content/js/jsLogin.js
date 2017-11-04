@@ -9,6 +9,21 @@ $(function(){
         loginIn(user,pass);
 
     });
+
+    $("#btnBoxRegister").on('click',function () {
+
+        $("#box01").addClass('hidden');
+        $("#box02").removeClass('hidden');
+
+    });
+
+    $("#btnBoxLogin").on('click',function () {
+
+        $("#box02").addClass('hidden');
+        $("#box01").removeClass('hidden');
+
+    });
+
 });
 
 //Variables globales de la AppJsLogin
@@ -20,7 +35,7 @@ var loginIn = function(a,b){
 
     $.ajax({
         url:'app/controller/login/LoginController.php',
-        type:"post",
+        type:"get",
         dataType:"json",
         async:true,
         cache:false,
@@ -34,7 +49,7 @@ var loginIn = function(a,b){
         //script para el loading
 
         console.log(response);
-        MyAlert(response.message,'success');
+       location.reload();
 
     }).fail(function (jqhr,textStatus,errno) {
         //script para terminar el loading
