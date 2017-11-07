@@ -1,4 +1,10 @@
 $(function(){
+
+    $("[data-mask]").inputmask();
+
+    /**
+     * Boton para iniciar sesion
+     */
     $("#btnLoginIn").on('click',function(){
 
         var user,pass;
@@ -10,13 +16,30 @@ $(function(){
 
     });
 
-    $("#btnBoxRegister").on('click',function () {
 
-        $("#box01").addClass('hidden');
-        $("#box02").removeClass('hidden');
+
+    /**
+     * Boton para registrarse
+     */
+    $("#btnRegister").on('click',function(){
+
+        fnloadSpinner(1);
 
     });
 
+    /**
+     * Boton para mostrar la caja de registro
+     */
+    $("#btnBoxRegister").on('click',function () {
+
+        $("#box01").addClass('hidden');
+        $("#box02").removeClass('hidden').addClass('animated bounceIn');
+
+    });
+
+    /**
+     * Boton para mostrar la caja de loginIn
+     */
     $("#btnBoxLogin").on('click',function () {
 
         $("#box02").addClass('hidden');
@@ -49,7 +72,7 @@ var loginIn = function(a,b){
         //script para el loading
 
         console.log(response);
-       location.reload();
+        location.reload();
 
     }).fail(function (jqhr,textStatus,errno) {
         //script para terminar el loading

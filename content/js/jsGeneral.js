@@ -1,83 +1,6 @@
 $(function () {
 
-    var History = window.History;
 
-    if (History.enabled) {
-        var page = get_url_value('page');
-        var path = page ? page : 'home';
-        // Load the page
-        load_page_content(path);
-    } else {
-        return false;
-    }
-
-    // Content update and back/forward button handler
-    History.Adapter.bind(window, 'statechange', function() {
-        var State = History.getState();
-        // Do ajax
-        load_page_content(State.data.path);
-        // Log the history object to your browser's console
-        History.log(State);
-    });
-
-    // Navigation link handler
-    $('body').on('click', 'nav a', function(e) {
-        e.preventDefault();
-
-        var urlPath = $(this).attr('href');
-        var title = $(this).text();
-
-        History.pushState({path: urlPath}, title, './?page=' + urlPath); // When we do this, History.Adapter will also execute its contents.
-    });
-
-    function load_page_content(page) {
-        $.ajax({
-            type: 'post',
-            url: page + '.html',
-            data: {},
-            success: function(response) {
-                $('.content').html(response);
-            }
-        });
-    }
-
-    function get_url_value(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i=0;i<vars.length;i++) {
-            var pair = vars[i].split("=");
-            if(pair[0] == variable){return pair[1];}
-        }
-        return(false);
-    }
-
-
-    $('#btnSalirHome').click(function () {
-
-        $.ajax({
-            url:'app/controller/login/getLoginOut.php',
-            type:'get',
-            data:{},
-            async:true,
-            cache:false,
-            beforeSend:function () {
-                $("body").append('<span id="preloader">Cargando Espere . . . .</span>');
-            },
-        }).done(function (response) {
-            History.pushState({path: 'app/controller/login/getLoginOut.php'}, 'Prueba 1', './?page=' + 'app/controller/login/getLoginOut.php');
-
-            $("#preloader").remove();
-            $("#resultado").html(response);
-
-
-        }).fail( function( jqXHR, textStatus, errno ) {
-
-            getthowError(jqXHR,textStatus);
-
-        });
-
-
-    });
     $('#btnSalirHome2').click(function () {
 
         $.ajax({
@@ -101,15 +24,87 @@ $(function () {
 
         });
 
-
     });
 
 });
 
-var MyAlert = function (mensaje,type) {
+var MyAlert = function (mensaje) {
 
     alert(mensaje);
 };
+
+function jsRemoveWindowLoad() {
+    // eliminamos el div que bloquea pantalla
+    $("#screenload").remove();
+
+}
+
+function jsShowWindowLoad(mensaje) {
+    //eliminamos si existe un div ya bloqueando
+    jsRemoveWindowLoad();
+
+    //si no enviamos mensaje se pondra este por defecto
+    if (mensaje === undefined) mensaje = " ";
+
+    //centrar imagen gif
+    height = 20;//El div del titulo, para que se vea mas arriba (H)
+    var ancho = 0;
+    var alto = 0;
+
+    //obtenemos el ancho y alto de la ventana de nuestro navegador, compatible con todos los navegadores
+    if (window.innerWidth == undefined) ancho = window.screen.width;
+    else ancho = window.innerWidth;
+    if (window.innerHeight == undefined) alto = window.screen.height;
+    else alto = window.innerHeight;
+
+    //operación necesaria para centrar el div que muestra el mensaje
+    var heightdivsito = alto/2 - parseInt(height)/2;//Se utiliza en el margen superior, para centrar
+
+    //imagen que aparece mientras nuestro div es mostrado y da apariencia de cargando
+    imgCentro = "<div style='text-align:center;height:" + alto + "px;'><div class='text-white text-bold'  style='margin-top:" + heightdivsito + "px; font-size:20px;'>" +
+        "<div class='preloader pl-size-l'><div class='spinner-layer pl-red'><div class='circle-clipper left'><div class='circle'></div> </div><div class='circle-clipper right'><div class='circle'></div> </div></div></div></div></div>";
+
+    //creamos el div que bloquea grande------------------------------------------
+    div = document.createElement("div");
+    div.id = "screenload";
+    div.style.width = ancho + "px";
+    div.style.height = alto + "px";
+    $("body").append(div);
+
+    //creamos un input text para que el foco se plasme en este y el usuario no pueda escribir en nada de atras
+    input = document.createElement("input");
+    input.id = "focusInput";
+    input.type = "text"
+
+    //asignamos el div que bloquea
+    $("#screenload").append(input);
+
+    //asignamos el foco y ocultamos el input text
+    $("#focusInput").focus();
+    $("#focusInput").hide();
+
+    //centramos el div del texto
+    $("#screenload").html(imgCentro);
+
+}
+
+function fnloadSpinner(opc){
+
+
+    switch (opc){
+        // mostrar fa-Spinner
+        case 1:
+            jsShowWindowLoad();
+            break;
+        case 2:
+            // Ocultar fa-Spinner
+            jsRemoveWindowLoad();
+            break;
+        default :
+            MyAlert("error no se encontro la opci&oacute;n solicitada","error");
+            break;
+    }
+}
 
 var getthowError = function (jqXHR,textStatus) {
 
