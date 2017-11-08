@@ -1,32 +1,49 @@
-$(function () {
+function getMenu(opc,parametros) {
+
+    switch (opc){
+        case 1:
+            break;
+        //Salir del Sistema
+        case 2:
+            break;
+        //Ventas - Caja y Pedidos
+        case 3:
+            $("#div_general").html('');
+            $("#div_general").load('app/views/ventas/FrmVentas.php');
+
+            break;
+        //Compras
+        case 4:
+
+            $("#div_general").html('');
+            $("#div_general").load('app/views/compras/FrmCompras.php');
+
+            break;
+         //Inventario
+        case 5:
+            $("#div_general").html('');
+            $("#div_general").load('app/views/inventario/FrmInventario.php');
+            break;
+        // Reportes
+        case 6:
+            $("#div_general").html('');
+            $("#div_general").load('app/views/reportes/FrmReportes.php');
+            break;
+        // Configuracion
+        case 7:
+            $("#div_general").html('');
+            $("#div_general").load('app/views/configuracion/FrmConfig.php');
+            break;
+    }
 
 
-    $('#btnSalirHome2').click(function () {
+}
 
-        $.ajax({
-            url:'app/controller/login/getLoginOut2.php',
-            type:'get',
-            data:{},
-            async:true,
-            cache:false,
-            beforeSend:function () {
-                $("body").append('<span id="preloader">Cargando Espere . . . .</span>');
-            },
-        }).done(function (response) {
-            History.pushState({path: 'app/controller/login/getLoginOut2.php'}, 'Prueba 2', './?page=' + 'app/controller/login/getLoginOut2.php');
 
-            $("#preloader").remove();
-            $("#resultado").html(response);
-
-        }).fail( function( jqXHR, textStatus, errno ) {
-
-            getthowError(jqXHR,textStatus);
-
-        });
-
-    });
-
-});
+/**
+ * Funciones de Sistema
+ *
+ */
 
 var MyAlert = function (mensaje) {
 

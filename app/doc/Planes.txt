@@ -1,0 +1,54 @@
+
+Jorge
+https://ionicframework.com/docs/ionicons/
+
+
+Basico / PRECIO = $600 Msl;$ 7,000 X 1;$12,000
+
+Compras 2 x dia
+Inventario
+Traspasos
+Ventas
+1 caja
+Reportes
+5 clientes
+2 usuarios
+20 insumos
+
+PyMe /PRECIO = $800 Msl; $8,500 X 1; Codigo: $14,000
+
+Compras
+Inventario
+Traspasos
+Ventas
+4 cajas
+Control de Cajas
+Reportes
+Indicadores
+Aplicacion Android para clientes
+Notificaciones 
+Alertas por correo
+10 clientes
+10 usuarios
+50 insumos
+
+ProFessional /PRECIO = $1,200 Msl; $12,500 X 1; Codigo: $22,000
+
+Compras
+Inventario
+Traspasos
+Ventas
+30 cajas
+Control de Cajas
+Reportes
+Control de Empleados
+Nominas
+Modulo de Finanzas
+Modulo de Contabilidad
+Aplicacion Android para clientes
+Indicadores
+Notificaciones 
+Alertas por correo
+clientes
+usuarios
+insumos
